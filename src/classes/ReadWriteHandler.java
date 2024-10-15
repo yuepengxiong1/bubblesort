@@ -9,10 +9,11 @@ import java.io.FileWriter;
 public class ReadWriteHandler {
     static int lineCounter = 0;
     
+    //write array to file using buffered writer. For each element in array, write it to file
     public static void writeArraytoFile(int array[], String filename){
         try (BufferedWriter output = new BufferedWriter(new FileWriter(new File(filename)))){
             for(int i = 0; i < array.length; i++){
-                output.write(array[i] + " ");
+                output.write(array[i] + "\n");
             }
             output.close();
         } catch(Exception e) {
@@ -20,6 +21,7 @@ public class ReadWriteHandler {
         }
     }
     
+    //read array from file using buffered reader. Must use getArraySize method first to get the size of array
     public static int[] readArrayfromFile(String filename){
         try (BufferedReader file = new BufferedReader(new FileReader(filename))){
             String line = file.readLine();
@@ -40,6 +42,7 @@ public class ReadWriteHandler {
         }
     }
 
+    //get the size of the array in the file
     public static int getArraySize(String filename){
         try (BufferedReader file = new BufferedReader(new FileReader(filename))){
             String line = file.readLine();
